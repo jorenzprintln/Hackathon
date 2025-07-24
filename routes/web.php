@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
-
+use App\Http\Controllers\BusinessProfileController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -25,4 +25,9 @@ Route::get('/', function () {
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
     Route::get('/tourist-feed', [DashboardController::class, 'touristFeed'])->name('tourist.feed');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/business/create', [BusinessProfileController::class, 'create'])->name('business.create');
+    Route::post('/business/store', [BusinessProfileController::class, 'store'])->name('business.store');
 });
