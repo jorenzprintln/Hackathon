@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BusinessProfileController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -31,3 +32,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/business/create', [BusinessProfileController::class, 'create'])->name('business.create');
     Route::post('/business/store', [BusinessProfileController::class, 'store'])->name('business.store');
 });
+
+Route::post('/profile-picture/update', [ProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');

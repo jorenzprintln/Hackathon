@@ -13,6 +13,7 @@ class DashboardController extends Controller
         if ($user->role === 'traveller') {
             return view('dashboards.traveller', compact('user'));
         } elseif ($user->role === 'business') {
+            $user->load('businessProfile');
             return view('dashboards.business', compact('user'));
         }
 

@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->enum('role', ['traveller', 'business']);
+            $table->string('profile_picture')->nullable();
             $table->rememberToken(); // ✅ Add this
             $table->timestamps();
         });
