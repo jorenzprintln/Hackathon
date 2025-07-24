@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\BusinessProfileController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FeedbackPostController;
 use App\Http\Controllers\AuthController;
 
 Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register');
@@ -34,3 +35,8 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::post('/profile-picture/update', [ProfileController::class, 'updateProfilePicture'])->name('profile.picture.update');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/feedback/create', [FeedbackPostController::class, 'create'])->name('feedback.create');
+    Route::post('/feedback/store', [FeedbackPostController::class, 'store'])->name('feedback.store');
+});

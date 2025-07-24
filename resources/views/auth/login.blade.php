@@ -284,6 +284,7 @@
         </form>
 
         <div class="divider">
+
         </div>
 
         <div class="register-link">
@@ -323,6 +324,21 @@
                 }, 1000);
             }, 2000);
         });
+        const createAccountLink = document.querySelector('.register-link a');
+createAccountLink.addEventListener('click', function(e) {
+    e.preventDefault();
+
+    // Show loading effect
+    this.innerHTML = 'Redirecting...';
+    this.style.background = 'linear-gradient(135deg, #a0aec0, #718096)';
+    this.style.color = 'white';
+    this.style.pointerEvents = 'none';
+
+    // Simulate delay then redirect
+    setTimeout(() => {
+        window.location.href = this.getAttribute('href');
+    }, 600); // Adjust delay as needed
+});
     </script>
 </body>
 </html>
