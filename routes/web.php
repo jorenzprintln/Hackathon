@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DashboardController;
 
 use App\Http\Controllers\AuthController;
 
@@ -20,3 +21,8 @@ Route::get('/', function () {
     }
     return view('welcome');
 })->name('welcome');
+
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/tourist-feed', [DashboardController::class, 'touristFeed'])->name('tourist.feed');
+});
