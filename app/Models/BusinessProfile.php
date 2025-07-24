@@ -12,4 +12,8 @@ class BusinessProfile extends Model
     {
         return $this->belongsTo(User::class);
     }
+    public function feedbackPosts() {
+        return $this->hasMany(FeedbackPost::class);
+    }
+
 }
